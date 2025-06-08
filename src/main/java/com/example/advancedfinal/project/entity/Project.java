@@ -3,16 +3,21 @@ package com.example.advancedfinal.project.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.*;
-
 import com.example.advancedfinal.User.entity.User;
 import com.example.advancedfinal.commet.entity.Comment;
-import com.example.advancedfinal.profile.entity.profile;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Project {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
@@ -21,13 +26,13 @@ public class Project {
     private String academicYear;
     private String department;
     private LocalDate postedAt;
-    private String imageurl;
     private String fileName;
 
     @ManyToOne
     private User user;
 
     @OneToMany(mappedBy = "project")
+    @JsonManagedReference
     private List<Comment> comments;
 
     // --- Getters and Setters ---
@@ -88,13 +93,6 @@ public class Project {
         this.postedAt = postedAt;
     }
 
-    public String getImageurl() {
-        return imageurl;
-    }
-
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
-    }
 
     public String getFileName() {
         return fileName;

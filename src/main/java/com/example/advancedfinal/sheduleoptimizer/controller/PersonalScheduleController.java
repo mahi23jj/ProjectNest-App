@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.advancedfinal.sheduleoptimizer.entity.PersonalSchedule;
 import com.example.advancedfinal.sheduleoptimizer.service.PersonalScheduleService;
 
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PersonalScheduleController {
 
-    private final PersonalScheduleService scheduleService;
+    private final PersonalScheduleService  scheduleService;
 
     // ✅ 1. Create a new schedule
     @PostMapping("/{userId}")

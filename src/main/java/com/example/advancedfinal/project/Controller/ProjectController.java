@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/projects")
+@RequestMapping("api/projects")
 @RequiredArgsConstructor
 public class ProjectController {
 
