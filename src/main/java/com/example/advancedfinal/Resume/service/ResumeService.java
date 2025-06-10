@@ -16,7 +16,7 @@ public class ResumeService {
     private final ResumeRepository resumeRepo;
 
     public List<Resume> getUserResumes(Long userId) {
-        return resumeRepo.findByUserId(userId);
+        return resumeRepo.findByUser_Id(userId);
     }
 
     public Resume getResumeById(Long id) {

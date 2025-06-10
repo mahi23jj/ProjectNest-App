@@ -20,7 +20,6 @@ import com.example.advancedfinal.Resume.entity.Resume;
 import com.example.advancedfinal.Resume.service.ResumePDFService;
 import com.example.advancedfinal.Resume.service.ResumeService;
 
-
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -53,17 +52,29 @@ public class ResumeController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{id}/pdf")
-    public ResponseEntity<byte[]> downloadResumePdf(@PathVariable Long id) {
+@GetMapping("/{id}/pdf")
+public ResponseEntity<byte[]> downloadResumePdf(@PathVariable Long id) {
+    try {
         Resume resume = resumeService.getResumeById(id);
+        if (resume == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
         byte[] pdf = pdfService.generateResumePDF(resume);
+        if (pdf == null || pdf.length == 0) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDisposition(ContentDisposition.attachment()
+        headers.setContentDisposition(ContentDisposition.builder("attachment")
                 .filename("resume-" + id + ".pdf")
                 .build());
 
         return new ResponseEntity<>(pdf, headers, HttpStatus.OK);
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
     }
+}
+
 }

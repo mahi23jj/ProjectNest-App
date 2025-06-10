@@ -45,6 +45,13 @@ public class ProjectController {
         return ResponseEntity.ok(projects);
     }
 
+    // to get a project using user id
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Project>> getProjectsByUserId(@PathVariable Long id) {
+        List<Project> projects = projectService.getProjectsByUserId(id);
+        return ResponseEntity.ok(projects);
+    }
+
     // Get project by id
     @GetMapping("/{id}")
     public ResponseEntity<Project> getProject(@PathVariable Long id) {
@@ -109,6 +116,8 @@ public class ProjectController {
         List<Project> recommendedProjects = projectService.recommendProjectsForUser(userId);
         return ResponseEntity.ok(recommendedProjects);
     }
+
+    
 }
 
 

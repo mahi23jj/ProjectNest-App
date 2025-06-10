@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.advancedfinal.User.entity.User;
 import com.example.advancedfinal.commet.entity.Comment;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
@@ -29,7 +30,9 @@ public class Project {
     private String fileName;
 
     @ManyToOne
-    private User user;
+@JsonBackReference
+private User user;
+
 
     @OneToMany(mappedBy = "project")
     @JsonManagedReference

@@ -104,6 +104,11 @@ public List<Project> listProjects(Optional<String> department, Optional<String> 
         projectRepository.deleteById(id);
     }
 
+       // ➕ New Method: Get Projects by User ID
+    public List<Project> getProjectsByUserId(Long userId) {
+        return projectRepository.findByUser_Id(userId);
+    }
+
     private String storeFile(MultipartFile file) throws IOException {
         String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
         String fileName = System.currentTimeMillis() + "-" + originalFileName;

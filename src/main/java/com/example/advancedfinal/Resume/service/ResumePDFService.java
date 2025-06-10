@@ -43,8 +43,8 @@ public class ResumePDFService {
 
                 case "creative":
                 headerFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 20, Color.MAGENTA);
-subHeader = FontFactory.getFont(FontFactory.COURIER_BOLD, 12, Color.MAGENTA);
-bodyFont = FontFactory.getFont(FontFactory.COURIER, 11, Color.DARK_GRAY);
+                subHeader = FontFactory.getFont(FontFactory.COURIER_BOLD, 12, Color.MAGENTA);
+                bodyFont = FontFactory.getFont(FontFactory.COURIER, 11, Color.DARK_GRAY);
 
                     accentColor = BaseColor.MAGENTA;
                     break;
@@ -52,8 +52,8 @@ bodyFont = FontFactory.getFont(FontFactory.COURIER, 11, Color.DARK_GRAY);
                 case "classic":
                 default:
                    headerFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Color.BLACK);
-subHeader = FontFactory.getFont(FontFactory.TIMES_BOLD, 12, Color.BLACK);
-bodyFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 11, Color.BLACK);
+                    subHeader = FontFactory.getFont(FontFactory.TIMES_BOLD, 12, Color.BLACK);
+                    bodyFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 11, Color.BLACK);
                     accentColor = BaseColor.BLACK;
                     break;
             }

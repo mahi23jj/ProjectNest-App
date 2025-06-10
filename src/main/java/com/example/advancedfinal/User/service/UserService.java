@@ -53,6 +53,11 @@ public class UserService {
         
     }
 
+    public User getUserByUsername(String username) {
+    return userRepository.findByUsername(username); // use your actual repo method
+}
+
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

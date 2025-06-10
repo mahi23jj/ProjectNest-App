@@ -10,7 +10,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findByDepartment(String department);
     List<Project> findByAcademicYear(String academicYear);
     List<Project> findByDepartmentAndAcademicYear(String department, String academicYear);
-
+    List<Project> findByUser_Id(Long userId);
 
 }
 

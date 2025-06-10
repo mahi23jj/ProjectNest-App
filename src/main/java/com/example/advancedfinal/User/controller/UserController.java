@@ -22,6 +22,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    
+
     // Get all users
     @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -45,15 +47,34 @@ public class UserController {
     }
 
     // Login user
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        boolean isValid = userService.validateUser(user.getUsername(), user.getPassword());
-        if (isValid) {
-            return ResponseEntity.ok("Login successful!");
+ @PostMapping("/login")
+public ResponseEntity<?> login(@RequestBody User user) {
+    boolean isValid = userService.validateUser(user.getUsername(), user.getPassword());
+
+    if (isValid) {
+        // Get full user info (e.g., from DB)
+        User fullUser = userService.getUserByUsername(user.getUsername());
+
+        if (fullUser != null) {
+            // Option 1: Return directly (Jackson will convert to JSON)
+            return ResponseEntity.ok(fullUser);
+
+            // Option 2 (manual map):
+            /*
+            Map<String, Object> userInfo = new HashMap<>();
+            userInfo.put("id", fullUser.getId());
+            userInfo.put("username", fullUser.getUsername());
+            userInfo.put("password", fullUser.getPassword()); // 🔒 not recommended
+            return ResponseEntity.ok(userInfo);
+            */
         } else {
-            return ResponseEntity.status(401).body("Login failed!");
+            return ResponseEntity.status(404).body("User not found!");
         }
+    } else {
+        return ResponseEntity.status(401).body("Login failed!");
     }
+}
+
 
     // delete all user
     @DeleteMapping("/delete")
