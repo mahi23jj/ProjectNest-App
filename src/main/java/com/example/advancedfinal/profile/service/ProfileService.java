@@ -1,14 +1,10 @@
 package com.example.advancedfinal.profile.service;
-import java.util.List;
-
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.example.advancedfinal.User.entity.User;
 import com.example.advancedfinal.User.repository.UserRepository;
 import com.example.advancedfinal.profile.entity.profile;
 import com.example.advancedfinal.profile.repository.profilerepository;
-// import com.example.advancedfinal.project.repository.ProjectRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -37,10 +33,10 @@ public class ProfileService {
  // display the created profile
 
 
-     public Profile getProfileByUserId(Long userId) {
-        return profileRepository.findByUserId(userId)
-                .orElseThrow(() -> new RuntimeException("Profile not found for user " + userId));
-    }
+    //  public Profile getProfileByUserId(Long userId) {
+    //     return profileRepository.findByUserId(userId)
+    //             .orElseThrow(() -> new RuntimeException("Profile not found for user " + userId));
+    // }
   
 }
 

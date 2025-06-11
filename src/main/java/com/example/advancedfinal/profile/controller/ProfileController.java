@@ -1,9 +1,7 @@
 package com.example.advancedfinal.profile.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,9 +31,9 @@ public class ProfileController {
         return ResponseEntity.ok(created);
     }
 
-  @GetMapping("/{userId}")
-    public ResponseEntity<Profile> getProfileByUser(@PathVariable Long userId) {
-        Profile profile = profileService.getProfileByUserId(userId);
-        return ResponseEntity.ok(profile);
-    }
+//   @GetMapping("/{userId}")
+//     public ResponseEntity<Profile> getProfileByUser(@PathVariable Long userId) {
+//         Profile profile = profileService.getProfileByUserId(userId);
+//         return ResponseEntity.ok(profile);
+//     }
 }
